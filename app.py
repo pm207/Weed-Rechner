@@ -10,7 +10,7 @@ if "personen_index" not in st.session_state:
 if "betraege" not in st.session_state:
     st.session_state.betraege = [0.0]
 
-gesamt_essen = st.number_input("Gesamtmenge (g):", min_value=0.0, step=0.1)
+gesamt_essen = st.number_input("Gesamtmenge (g):", min_value=0.0, step=1.0)
 
 st.subheader("Einzahlungen")
 
@@ -19,7 +19,7 @@ for i in range(st.session_state.personen_index):
     st.session_state.betraege[i] = st.number_input(
         name,
         min_value=0.0,
-        step=0.1,
+        step=10.0,
         key=f"person_{i}"
     )
 
@@ -42,7 +42,8 @@ with col2:
             for i, betrag in enumerate(st.session_state.betraege):
                 anteil = (betrag / gesamtbetrag) * gesamt_essen
                 name = "Kiffer Nr. 1" if i == 0 else f"Kiffer Nr. {i+1}"
-                st.success(f"{name}: {anteil:.1f} g")
+                st.success(f"{name}: {anteil:.2f} g")
+
 
 
 
