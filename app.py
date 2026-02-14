@@ -1,4 +1,5 @@
 import streamlit as st
+import string
 
 st.set_page_config(page_title="Who get's the Weed? 🍃", layout="centered")
 
@@ -15,7 +16,8 @@ gesamt_essen = st.number_input("Gesamtmenge (g):", min_value=0.0, step=1.0)
 st.subheader("Einzahlungen")
 
 for i in range(st.session_state.personen_index):
-    name = "Kiffer Nr. 1 zahlt:" if i == 0 else f"Kiffer Nr. {i+1} zahlt:"
+    buchstabe = string.ascii_uppercase[i]
+    name = f"Kiffer {buchstabe} zahlt:"
     st.session_state.betraege[i] = st.number_input(
         name,
         min_value=0.0,
@@ -40,9 +42,11 @@ with col2:
         else:
             st.subheader("Ergebnis")
             for i, betrag in enumerate(st.session_state.betraege):
-                anteil = (betrag / gesamtbetrag) * gesamt_essen
-                name = "Kiffer Nr. 1" if i == 0 else f"Kiffer Nr. {i+1}"
-                st.success(f"{name}: {anteil:.2f} g")
+            anteil = (betrag / gesamtbetrag) * gesamt_essen
+            buchstabe = string.ascii_uppercase[i]
+            wert_formatiert = f"{anteil:.2f}".replace(".", ",")
+            st.success(f"Kiffer {buchstabe}: {wert_formatiert} g")
+
 
 
 
