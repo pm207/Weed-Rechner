@@ -42,12 +42,8 @@ with col2:
         else:
             st.subheader("Ergebnis")
             for i, betrag in enumerate(st.session_state.betraege):
-            anteil = (betrag / gesamtbetrag) * gesamt_essen
-            buchstabe = string.ascii_uppercase[i]
-            wert_formatiert = f"{anteil:.2f}".replace(".", ",")
-            st.success(f"Kiffer {buchstabe}: {wert_formatiert} g")
-
-
-
-
-
+                anteil = (betrag / gesamtbetrag) * gesamt_essen
+                buchstabe = string.ascii_uppercase[i]
+                wert_formatiert = f"{anteil:.2f}".replace(".", ",")
+                st.success(f"Kiffer {buchstabe}: {wert_formatiert} g")
+#tsuki
