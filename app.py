@@ -41,7 +41,8 @@ with col2:
             st.subheader("Ergebnis")
             for i, betrag in enumerate(st.session_state.betraege):
                 anteil = (betrag / gesamtbetrag) * gesamt_essen
-                name = "Billy" if i == 0 else f"Kiffer Nr. {i+1}"
+                name = "Kiffer Nr. 1" if i == 0 else f"Kiffer Nr. {i+1}"
                 st.success(f"{name}: {anteil:.1f} g")
+
 
 
